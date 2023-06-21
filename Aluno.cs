@@ -1,17 +1,16 @@
 using System;
 
-namespace Aluno
+namespace Escola
 {
-	public class Aluno
+	public class Aluno : Pessoa
 	{
-		public List<Aluno> alunos = new List<Aluno>();
-		
-		public List<Curso> cursos = new List<Curso>();
-		
-		public List<Materia> materias = new List<materia>();
-		
-		public List<Nota> notas = new List<Nota>();
-		
-		
+		public int MatriculaAluno{get; set;}
+		public string EmailAluno{get; set;}
+
+		public int Tumra{get; set;}
+
+		 public override void ExibirInformacoes(){
+            base.ExibirInformacoes();
+        }
 	}
 }
