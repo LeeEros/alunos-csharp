@@ -1,7 +1,6 @@
 using System;
 
-namespace Escola
-{
+namespace Escola{
 	public class Aluno : Pessoa
 	{
 		public int MatriculaAluno{get; set;}

@@ -13,5 +13,14 @@ namespace Escola{
 		public List<Turma> Turmas = new List<Turma>();
 
 		public List<Materia> Materias = new List<Materia>();
+
+        public void SalvarDados(){
+            File.WriteAllText("Alunos.json", JsonConvert.SerializeObject(Alunos));
+            File.WriteAllText("Professores.json", JsonConvert.SerializeObject(Professores));
+            File.WriteAllText("Turmas.json", JsonConvert.SerializeObject(Turmas));
+            File.WriteAllText("Materias.json", JsonConvert.SerializeObject(Materias));
+       }
+
+
     }
 }
