@@ -1,16 +1,1 @@
-[
-    {
-        "MatriculaAluno": 1,
-        "EmailAluno": "kayane.alebrante@escola.com",
-        "Tumra": 0,
-        "Nome": "Kayane Alebrante",
-        "DataNascimento": "2002-04-22T00:00:00"
-    },
-    {
-        "MatriculaAluno": 2,
-        "EmailAluno": "lee.eros@escola.com",
-        "Tumra": 0,
-        "Nome": "Lee Eros Galaad Dias de Moura",
-        "DataNascimento": "2000-05-11T00:00:00"
-    }
-]
+[{"MatriculaAluno":1,"EmailAluno":"kayane.alebrante@escola.com","Turma":0,"Nome":"Kayane Alebrante","DataNascimento":"2002-04-22T00:00:00"},{"MatriculaAluno":2,"EmailAluno":"lee.eros@escola.com","Turma":0,"Nome":"Lee Eros Galaad Dias de Moura","DataNascimento":"2000-05-11T00:00:00"},{"MatriculaAluno":3,"EmailAluno":"lucas.alebrante@gmail.com","Turma":1,"Nome":"Lucas Alebrante","DataNascimento":"1999-10-04T00:00:00"},{"MatriculaAluno":4,"EmailAluno":"testando@gmail.com","Turma":5,"Nome":"Testando","DataNascimento":"2023-06-28T00:00:00"},{"MatriculaAluno":5,"EmailAluno":"asas","Turma":5,"Nome":"testando","DataNascimento":"0001-01-01T00:00:00"},{"MatriculaAluno":6,"EmailAluno":"asas","Turma":7,"Nome":"asass","DataNascimento":"0001-01-01T00:00:00"},{"MatriculaAluno":7,"EmailAluno":"asas","Turma":5,"Nome":"asas","DataNascimento":"0001-01-01T00:00:00"},{"MatriculaAluno":8,"EmailAluno":"as","Turma":1,"Nome":"asas","DataNascimento":"0001-01-01T00:00:00"},{"MatriculaAluno":9,"EmailAluno":"asas","Turma":1,"Nome":"asas","DataNascimento":"0001-01-01T00:00:00"}]

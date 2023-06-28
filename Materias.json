@@ -1,7 +1,1 @@
-[
-    {
-        "IdMateira": 1,
-        "NomeMateria": "Lógica de Programação",
-        "ProfessorResposavel": 1
-    }
-]
+[{"IdMateira":1,"NomeMateria":"Lógica de Programação","ProfessorResposavel":1}]

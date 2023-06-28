@@ -1,7 +1,1 @@
-[
-    {
-        "IDturma": 1,
-        "NomeTurma": "1º Semestre TADS",
-        "NumeroSala": 15
-    }
-]
+[{"GradeTurma":[],"AlunosTurma":[],"Idturma":1,"NomeTurma":"1º Semestre TADS","NumeroSala":15}]
