@@ -1,1 +1,23 @@
-[{"MatriculaProfessor":1,"Formacao":null,"EmailInstitucional":"mario.bros@escola.com","Nome":"Mario Bros","DataNascimento":"1981-01-01T00:00:00"},{"MatriculaProfessor":2,"Formacao":null,"EmailInstitucional":"luid.bros@escola.com","Nome":"Luid Bros","DataNascimento":"1985-01-01T00:00:00"}]
+[
+    {
+        "MatriculaProfessor": 1,
+        "Formacao": null,
+        "EmailInstitucional": "mario.bros@escola.com",
+        "Nome": "Mario Bros",
+        "DataNascimento": "1981-01-01T00:00:00"
+    },
+    {
+        "MatriculaProfessor": 2,
+        "Formacao": null,
+        "EmailInstitucional": "luid.bros@escola.com",
+        "Nome": "Luid Bros",
+        "DataNascimento": "1985-01-01T00:00:00"
+    },
+    {
+        "MatriculaProfessor": 3,
+        "Formacao": "Educação Fisica;",
+        "EmailInstitucional": "marcio.silva@escola.com",
+        "Nome": "Marcio da Silva",
+        "DataNascimento": "1995-10-25T00:00:00"
+    }
+]

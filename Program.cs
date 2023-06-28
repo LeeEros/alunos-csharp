@@ -83,8 +83,41 @@ namespace Escola
             }
         }
 
-        static void Consultas(Escola escola)
-        {
+        static void Consultas(Escola escola){
+			Console.Clear();
+            Console.WriteLine("Selecione uma opção de cadastro:");
+            Console.WriteLine("1 - Consultar Aluno");
+            Console.WriteLine("2 - Consultar  Professor");
+            Console.WriteLine("3 - Consultar  Matéria");
+            Console.WriteLine("4 - Consultar Turma");
+            Console.WriteLine("0 - Voltar");
+
+            int.TryParse(Console.ReadLine(), out int opcao);
+
+            switch (opcao)
+            {
+                case 1:
+				   
+                break;
+
+                case 2:
+                    
+                break;
+
+                case 3:
+                    
+                break;
+
+                case 4:
+                   
+                break;
+
+                case 0:
+                    Console.WriteLine("Voltando...");
+                    Console.ReadKey();
+                break;
+            }
+			
 
         }
 

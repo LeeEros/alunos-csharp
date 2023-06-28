@@ -8,10 +8,5 @@ namespace Escola
         public string EmailAluno { get; set; }
 
         public int Turma { get; set; }
-
-        public override void ExibirInformacoes()
-        {
-            base.ExibirInformacoes();
-        }
     }
 }

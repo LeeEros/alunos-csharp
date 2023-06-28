@@ -98,7 +98,7 @@ namespace Escola
             string nomeProf = Console.ReadLine();
             Console.WriteLine("Data de Nascimento(AAAA-MM-DD): ");
             DateTime.TryParse(Console.ReadLine(), out DateTime dataNasc);
-            Console.WriteLine("Fromação: ");
+            Console.WriteLine("Formação: ");
             string formacao = Console.ReadLine();
             Console.WriteLine("Email Institucional: ");
             string emailProf = Console.ReadLine();
