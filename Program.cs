@@ -46,8 +46,8 @@ namespace Escola{
 			Console.WriteLine("Selecione uma opção de cadastro:");
             Console.WriteLine("1 - Cadastrar Aluno");  
             Console.WriteLine("2 - Cadastrar Professor");
-			Console.WriteLine("2 - Cadastrar Matéria");  
-			Console.WriteLine("2 - Cadastrar Turma");        
+			Console.WriteLine("3 - Cadastrar Matéria");  
+			Console.WriteLine("4 - Cadastrar Turma");        
             Console.WriteLine("0 - Voltar"); 
 
 			int.TryParse(Console.ReadLine(), out int opcao);

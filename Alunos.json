@@ -1,1 +1,16 @@
-[{"MatriculaAluno":1,"EmailAluno":"kayane.alebrante@escola.com","Tumra":0,"Nome":"Kayane Alebrante","DataNascimento":"2002-04-22T00:00:00"}]
+[
+    {
+        "MatriculaAluno": 1,
+        "EmailAluno": "kayane.alebrante@escola.com",
+        "Tumra": 0,
+        "Nome": "Kayane Alebrante",
+        "DataNascimento": "2002-04-22T00:00:00"
+    },
+    {
+        "MatriculaAluno": 2,
+        "EmailAluno": "lee.eros@escola.com",
+        "Tumra": 0,
+        "Nome": "Lee Eros Galaad Dias de Moura",
+        "DataNascimento": "2000-05-11T00:00:00"
+    }
+]

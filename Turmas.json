@@ -1,1 +1,7 @@
-[]
+[
+    {
+        "IDturma": 1,
+        "NomeTurma": "1º Semestre TADS",
+        "NumeroSala": 15
+    }
+]
