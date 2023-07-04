@@ -50,39 +50,33 @@ namespace Escola
 
         public void CadastrarAluno(Escola escola)
         {
+
+            string emailAluno;
+            DateTime dataNascimento;
+            string nomeAluno;
             Console.Clear();
             Console.WriteLine("Cadastro de aluno(a):");
+
+            do {
             Console.WriteLine("Nome Completo: ");
-            string nomeAluno = Console.ReadLine();
+            nomeAluno = Console.ReadLine();
+            nomeAluno = nomeAluno.Trim();
+            }while (nomeAluno == null || nomeAluno == "");
+
+            do {
             Console.WriteLine("Data de Nascimento(AAAA-MM-DD): ");
-            DateTime.TryParse(Console.ReadLine(), out DateTime dataNascimento);
+            DateTime.TryParse(Console.ReadLine(), out dataNascimento);
+            }while (dataNascimento == new DateTime());
+
+            do {
+
             Console.WriteLine("Email Aluno: ");
-            string emailAluno = Console.ReadLine();
+            emailAluno = Console.ReadLine();
+            emailAluno = emailAluno.Trim();
+            } while (emailAluno == null || emailAluno == "");
 
-            int cond = 0;
-            int IDTurma;
 
-            do
-            {
-                Console.WriteLine("ID da Turma");
-                IDTurma = Convert.ToInt32(Console.ReadLine());
-
-                Turma turmas = Turmas.Find(t => t.Idturma == IDTurma);
-
-                if (turmas == null)
-                {
-                    Console.WriteLine("Turma não Econtrada.");
-                    cond = 0;
-                }
-
-                else
-                {
-                    Console.WriteLine("Turma econtrada...");
-                    cond = 3;
-                }
-            } while (cond < 2);
-
-            Aluno novoAluno = new Aluno { MatriculaAluno = escola.Alunos.Count + 1, Nome = nomeAluno, DataNascimento = dataNascimento, EmailAluno = emailAluno, Turma = IDTurma };
+            Aluno novoAluno = new Aluno { MatriculaAluno = escola.Alunos.Count + 1, Nome = nomeAluno, DataNascimento = dataNascimento, EmailAluno = emailAluno};
             escola.Alunos.Add(novoAluno);
 
             escola.SalvarDados();
@@ -92,16 +86,35 @@ namespace Escola
 
         public void CadastrarProfessor(Escola escola)
         {
+            string nomeProf;
+            DateTime dataNasc;
+            string formacao;
+            string emailProf;
+
             Console.Clear();
             Console.WriteLine("Cadastro de Professor:");
+            do {
             Console.WriteLine("Nome Completo: ");
-            string nomeProf = Console.ReadLine();
+            nomeProf = Console.ReadLine();
+            nomeProf = nomeProf.Trim();
+            } while (nomeProf == null || nomeProf == "");
+
+            do {
             Console.WriteLine("Data de Nascimento(AAAA-MM-DD): ");
-            DateTime.TryParse(Console.ReadLine(), out DateTime dataNasc);
+            DateTime.TryParse(Console.ReadLine(), out dataNasc);
+            } while (dataNasc == new DateTime());
+
+            do {
             Console.WriteLine("Formação: ");
-            string formacao = Console.ReadLine();
+            formacao = Console.ReadLine().Trim();
+            formacao = formacao.Trim();
+            } while (formacao == null || formacao == "");
+
+            do {
             Console.WriteLine("Email Institucional: ");
-            string emailProf = Console.ReadLine();
+            emailProf = Console.ReadLine();
+            emailProf = emailProf.Trim();
+            }while (emailProf == null || emailProf == "");
 
             Professor novoProf = new Professor { MatriculaProfessor = escola.Professores.Count + 1, Nome = nomeProf, DataNascimento = dataNasc, Formacao = formacao, EmailInstitucional = emailProf };
             escola.Professores.Add(novoProf);
