@@ -10,7 +10,13 @@ namespace Escola{
 
         public override void ExibirInformacoes()
         {
-            
+            int idade = calculaIdade();
+
+            Console.WriteLine("Nome do Professor: " + Nome);
+            Console.WriteLine("Data de Nascimento: " + DataNascimento + " - " + idade + " anos");
+            Console.WriteLine("Email: " + EmailInstitucional);
+            Console.WriteLine("Formacao: " + Formacao);
+            Console.WriteLine("Matricula: " + MatriculaProfessor);
         }
     }
 }
