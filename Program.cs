@@ -92,7 +92,7 @@ namespace Escola {
 
          switch (opcao) {
          case 1:
-            escola.ConsultaAluno(escola);
+            escola.ConsultarAluno(escola);
             break;
 
          case 2:

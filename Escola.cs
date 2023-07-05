@@ -200,7 +200,7 @@ namespace Escola {
 
       // Consultas
 
-      public void ConsultaAluno(Escola escola) {
+      public void ConsultarAluno(Escola escola) {
          try {
             int idAluno;
             Aluno aluno;
@@ -224,7 +224,37 @@ namespace Escola {
             }
          } catch (System.FormatException) {
 
-            Console.WriteLine("O id do aluno e da turma devem ser um inteiro");
+            Console.WriteLine("O id do aluno deve ser um inteiro");
+         } finally {
+            Console.ReadKey();
+         }
+      }
+
+      public void ConsultarProfessor(Escola escola) {
+         try {
+            int idProfessor;
+            Professor professor;
+            Console.Clear();
+            Console.WriteLine("Qual professor você quer consultar:");
+            do {
+
+               Console.WriteLine("{0,-10} {1,-30}", "Id Professor", "Nome Professor");
+               foreach(var professorLista in escola.Professores) {
+                  Console.WriteLine("{0,-10} {1,-30}", professorLista.MatriculaProfessor, professorLista.Nome);
+               }
+               int.TryParse(Console.ReadLine(), out idProfessor);
+            } while (idProfessor == null);
+
+            professor = escola.Professores.Find(aluno => professor.MatriculaAluno == idProfessor);
+
+            if (professor == null) {
+               Console.WriteLine("Professor não encontrado");
+            } else {
+               professor.ExibirInformacoes();
+            }
+         } catch (System.FormatException) {
+
+            Console.WriteLine("O id do professor deve ser um inteiro");
          } finally {
             Console.ReadKey();
          }
