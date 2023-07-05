@@ -23,12 +23,12 @@ namespace Escola {
         public List < Aluno > AlunosTurma = new List < Aluno > ();
 
         public void SalvarDadosTurma() {
-            File.WriteAllText("GradeTurma.json", JsonConvert.SerializeObject(GradeTurma));
+            File.WriteAllText(".\\dados\\GradeTurma.json", JsonConvert.SerializeObject(GradeTurma));
         }
 
         public void CarregarDadosTurma() {
-            if (File.Exists("GradeTurma.json")) {
-                GradeTurma = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText("GradeTurma.json"));
+            if (File.Exists(".\\dados\\GradeTurma.json")) {
+                GradeTurma = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText("\\dados\\GradeTurma.json"));
             }
         }
     }

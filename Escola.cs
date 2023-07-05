@@ -14,27 +14,27 @@ namespace Escola {
         public List < Materia > Materias = new List < Materia > ();
 
         public void SalvarDados() {
-            File.WriteAllText("Alunos.json", JsonConvert.SerializeObject(Alunos));
-            File.WriteAllText("Professores.json", JsonConvert.SerializeObject(Professores));
-            File.WriteAllText("Turmas.json", JsonConvert.SerializeObject(Turmas));
-            File.WriteAllText("Materias.json", JsonConvert.SerializeObject(Materias));
+            File.WriteAllText(".\\dados\\Alunos.json", JsonConvert.SerializeObject(Alunos));
+            File.WriteAllText(".\\dados\\Professores.json", JsonConvert.SerializeObject(Professores));
+            File.WriteAllText(".\\dados\\Turmas.json", JsonConvert.SerializeObject(Turmas));
+            File.WriteAllText(".\\dados\\Materias.json", JsonConvert.SerializeObject(Materias));
         }
 
         public void CarregarDados() {
-            if (File.Exists("Alunos.json")) {
-                Alunos = JsonConvert.DeserializeObject < List < Aluno >> (File.ReadAllText("Alunos.json"));
+            if (File.Exists(".\\dados\\Alunos.json")) {
+                Alunos = JsonConvert.DeserializeObject < List < Aluno >> (File.ReadAllText(".\\dados\\Alunos.json"));
             }
 
-            if (File.Exists("Professores.json")) {
-                Professores = JsonConvert.DeserializeObject < List < Professor >> (File.ReadAllText("Professores.json"));
+            if (File.Exists(".\\dados\\Professores.json")) {
+                Professores = JsonConvert.DeserializeObject < List < Professor >> (File.ReadAllText(".\\dados\\Professores.json"));
             }
 
-            if (File.Exists("Turmas.json")) {
-                Turmas = JsonConvert.DeserializeObject < List < Turma >> (File.ReadAllText("Turmas.json"));
+            if (File.Exists(".\\dados\\Turmas.json")) {
+                Turmas = JsonConvert.DeserializeObject < List < Turma >> (File.ReadAllText(".\\dados\\Turmas.json"));
             }
 
-            if (File.Exists("Materias.json")) {
-                Materias = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText("Materias.json"));
+            if (File.Exists(".\\dados\\Materias.json")) {
+                Materias = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText(".\\dados\\Materias.json"));
             }
         }
 
