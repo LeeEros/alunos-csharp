@@ -150,6 +150,7 @@ namespace Escola {
                 break;
 
             case 5:
+                escola.AlterarProfessorDaMateria(escola);
                 break;
 
             case 0:

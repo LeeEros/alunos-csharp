@@ -764,5 +764,65 @@ namespace Escola {
                 Console.ReadLine();
             }
         }
+
+        public void AlterarProfessorDaMateria(Escola escola) {
+            try {
+                int IdMateria;
+                int IdProfessor;
+                Materia materia;
+                Professor professor;
+                Console.Clear();
+                if (escola.Materias == null || escola.Materias.Count < 1) {
+                    Console.WriteLine("A Escola não possuí matérias cadastradas!");
+                    return;
+                } else if (escola.Professores == null || escola.Professores.Count < 1) {
+                    Console.WriteLine("A Escola não possuí professores cadastrados!");
+                    return;
+                }
+                Console.WriteLine("Qual materia você quer alterar:");
+                do {
+
+                    Console.WriteLine("{0,-20} {1,-30} {2,-30}", "Id Materia", "Nome Materia", "Professor");
+                    foreach(var materiaLista in escola.Materias) {
+                        Console.WriteLine("{0,-20} {1,-30} {2,-30}", materiaLista.IdMateria, materiaLista.NomeMateria, materiaLista.ProfessorResposavel.Nome);
+                    }
+                    int.TryParse(Console.ReadLine(), out IdMateria);
+                } while (IdMateria == null);
+
+                materia = escola.Materias.Find(materia => materia.IdMateria == IdMateria);
+
+                if (materia == null) {
+                    Console.Clear();
+                    Console.WriteLine("Materia não encontrada");
+                } else {
+                    Console.Clear();
+                    Console.WriteLine("Qual professor você quer colocar na materia:");
+                    do {
+                        Console.WriteLine("{0,-10} {1,-30}", "Id Professor", "Nome Professor");
+                        foreach(var professorLista in escola.Professores) {
+                            Console.WriteLine("{0,-10} {1,-30}", professorLista.MatriculaProfessor, professorLista.Nome);
+                        }
+                        int.TryParse(Console.ReadLine(), out IdProfessor);
+                    } while (IdProfessor == null);
+
+                    professor = escola.Professores.Find(professor => professor.MatriculaProfessor == IdProfessor);
+
+                    if (professor == null) {
+                        Console.Clear();
+                        Console.WriteLine("Professor não encontrado");
+                    } else {
+                        Console.Clear();
+                        materia.ProfessorResposavel = professor;
+                        escola.SalvarDados();
+                        Console.WriteLine("Professor alterado com sucesso");
+
+                    }
+                }
+            } catch {
+
+            } finally {
+                Console.ReadLine();
+            }
+        }
     }
 }
