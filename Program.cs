@@ -54,6 +54,7 @@ namespace Escola
             Console.WriteLine("2 - Cadastrar Professor");
             Console.WriteLine("3 - Cadastrar Matéria");
             Console.WriteLine("4 - Cadastrar Turma");
+            Console.WriteLine("5 - Vincular Aluno a turma");
             Console.WriteLine("0 - Voltar");
 
             int.TryParse(Console.ReadLine(), out int opcao);
@@ -74,6 +75,10 @@ namespace Escola
 
                 case 4:
                     escola.CadastrarTurmas(escola);
+                    break;
+
+                case 5:
+                    escola.VincularAlunoATurma(escola);
                     break;
 
                 case 0:
