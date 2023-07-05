@@ -22,13 +22,29 @@ namespace Escola {
         public List < Materia > GradeTurma = new List < Materia > ();
         public List < Aluno > AlunosTurma = new List < Aluno > ();
 
-        public void SalvarDadosTurma() {
-            File.WriteAllText(".\\dados\\GradeTurma.json", JsonConvert.SerializeObject(GradeTurma));
+        public void MostrarAlunos(){
+            if(AlunosTurma == null || AlunosTurma.Count < 1) {
+                Console.WriteLine("A turma não possuí alunos!");
+                return;
+            } else {
+                Console.WriteLine("Alunos da Turma:");
+                Console.WriteLine("{0,-10} {1,-30}", "Id Aluno", "Nome Aluno");
+                foreach(var aluno in AlunosTurma) {
+                    Console.WriteLine("{0,-10} {1,-30}", aluno.MatriculaAluno, aluno.Nome);
+                }
+            }
         }
 
-        public void CarregarDadosTurma() {
-            if (File.Exists(".\\dados\\GradeTurma.json")) {
-                GradeTurma = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText("\\dados\\GradeTurma.json"));
+        public void MostrarGrade(){
+            if(GradeTurma == null || GradeTurma.Count < 1) {
+                Console.WriteLine("A turma não possuí grade!");
+                return;
+            } else {
+                Console.WriteLine("Grade da Turma:");
+                Console.WriteLine("{0,-10} {1,-30} {2,-30}", "Id Materia", "Nome Materia", "Nome Professor");
+                foreach(var materia in GradeTurma) {
+                    Console.WriteLine("{0,-10} {1,-30}", materia.IdMateira, materia.NomeMateria, materia.ProfessorResposavel.Nome);
+                }
             }
         }
     }

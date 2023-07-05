@@ -12,9 +12,24 @@ namespace Escola {
             set;
         }
 
-        public int ProfessorResposavel {
+        public Professor ProfessorResposavel {
             get;
             set;
+        }
+
+        public List<Turma> obterTurmas(Escola escola) {
+
+            List<Turma> turmas = new List<Turma>();
+
+            foreach (var turma in escola.Turmas)
+            {
+                Materia materiaExisteNaturma = turma.GradeTurma.Find(materia => materia.IdMateira == this.IdMateira);
+                
+                if(materiaExisteNaturma != null) {
+                    turmas.Add(turma);
+                }
+            }
+            return turmas;
         }
 
     }

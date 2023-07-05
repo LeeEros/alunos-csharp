@@ -100,11 +100,11 @@ namespace Escola {
                 break;
 
             case 3:
-
+                escola.ConsultarMateria(escola);
                 break;
 
             case 4:
-
+                escola.ConsultarTurma(escola);
                 break;
 
             case 0:
