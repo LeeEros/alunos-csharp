@@ -18,7 +18,7 @@ namespace Escola
                 Console.WriteLine("Selecione uma opção:");
                 Console.WriteLine("1 - Cadastro");
                 Console.WriteLine("2 - Consultas");
-                Console.WriteLine("3-Alterações");
+                Console.WriteLine("3 - Alterações");
                 Console.WriteLine("0 - Sair");
 
                 int.TryParse(Console.ReadLine(), out opcao);
@@ -92,8 +92,8 @@ namespace Escola
 			Console.Clear();
             Console.WriteLine("Selecione uma opção de cadastro:");
             Console.WriteLine("1 - Consultar Aluno");
-            Console.WriteLine("2 - Consultar  Professor");
-            Console.WriteLine("3 - Consultar  Matéria");
+            Console.WriteLine("2 - Consultar Professor");
+            Console.WriteLine("3 - Consultar Matéria");
             Console.WriteLine("4 - Consultar Turma");
             Console.WriteLine("0 - Voltar");
 
@@ -102,7 +102,7 @@ namespace Escola
             switch (opcao)
             {
                 case 1:
-				   
+                escola.ConsultaAluno(escola);				   
                 break;
 
                 case 2:
