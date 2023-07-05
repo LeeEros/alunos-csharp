@@ -17,15 +17,14 @@ namespace Escola {
             set;
         }
 
-        public List<Turma> obterTurmas(Escola escola) {
+        public List < Turma > obterTurmas(Escola escola) {
 
-            List<Turma> turmas = new List<Turma>();
+            List < Turma > turmas = new List < Turma > ();
 
-            foreach (var turma in escola.Turmas)
-            {
+            foreach(var turma in escola.Turmas) {
                 Materia materiaExisteNaturma = turma.GradeTurma.Find(materia => materia.IdMateria == this.IdMateria);
-                
-                if(materiaExisteNaturma != null) {
+
+                if (materiaExisteNaturma != null) {
                     turmas.Add(turma);
                 }
             }

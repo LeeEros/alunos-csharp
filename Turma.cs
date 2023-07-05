@@ -22,8 +22,8 @@ namespace Escola {
         public List < Materia > GradeTurma = new List < Materia > ();
         public List < Aluno > AlunosTurma = new List < Aluno > ();
 
-        public void MostrarAlunos(){
-            if(AlunosTurma == null || AlunosTurma.Count < 1) {
+        public void MostrarAlunos() {
+            if (AlunosTurma == null || AlunosTurma.Count < 1) {
                 Console.WriteLine("A turma não possuí alunos!");
                 return;
             } else {
@@ -35,8 +35,8 @@ namespace Escola {
             }
         }
 
-        public void MostrarGrade(){
-            if(GradeTurma == null || GradeTurma.Count < 1) {
+        public void MostrarGrade() {
+            if (GradeTurma == null || GradeTurma.Count < 1) {
                 Console.WriteLine("A turma não possuí grade!");
                 return;
             } else {

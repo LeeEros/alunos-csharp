@@ -12,8 +12,8 @@ namespace Escola {
         }
 
         public Pessoa(string nome, DateTime dataNascimento) {
-         this.Nome = nome;
-         this.DataNascimento = dataNascimento;
+            this.Nome = nome;
+            this.DataNascimento = dataNascimento;
         }
 
         public int calculaIdade() {

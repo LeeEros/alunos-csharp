@@ -17,7 +17,7 @@ namespace Escola {
             private set;
         }
 
-        public Professor(string nome, DateTime dataNascimento, int matriculaProfessor, string formacao, string emailInstitucional) : base(nome, dataNascimento) {
+        public Professor(string nome, DateTime dataNascimento, int matriculaProfessor, string formacao, string emailInstitucional): base(nome, dataNascimento) {
             this.MatriculaProfessor = matriculaProfessor;
             this.Formacao = formacao;
             this.EmailInstitucional = emailInstitucional;

@@ -11,11 +11,10 @@ namespace Escola {
             private set;
         }
 
-        public Aluno(string nome, DateTime dataNascimento, int matriculaAluno, string emailAluno) : base(nome, dataNascimento) {
+        public Aluno(string nome, DateTime dataNascimento, int matriculaAluno, string emailAluno): base(nome, dataNascimento) {
             this.MatriculaAluno = matriculaAluno;
             this.EmailAluno = emailAluno;
         }
-
 
         public override void ExibirInformacoes() {
             int idade = calculaIdade();
