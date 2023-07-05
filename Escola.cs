@@ -124,31 +124,42 @@ namespace Escola
         }
 
         public void CadastrarMateria(Escola escola)
-        {
+        { try {
+
+            string nomeMateria;
             Console.Clear();
             Console.WriteLine("Cadastro de Matéria:");
+            do {
             Console.WriteLine("Nome Matéria: ");
-            string nomeMateria = Console.ReadLine();
+            nomeMateria = Console.ReadLine();
+            nomeMateria = nomeMateria.Trim();
+            }while (nomeMateria == null || nomeMateria == "");
 
             int cond = 0;
             int IDprof;
 
             do
             {
-                Console.WriteLine("ID da Turma");
+
+                Console.WriteLine("{0,-10} {1,-30}", "Id Prof", "Nome Professor");
+                foreach(var professor in escola.Professores) {
+                    Console.WriteLine("{0,-10} {1,-30}", professor.MatriculaProfessor, professor.Nome);
+                }
+
+                Console.WriteLine("ID do Professor Responsável pela materia de " + nomeMateria + ":");
                 IDprof = Convert.ToInt32(Console.ReadLine());
 
                 Professor profs = Professores.Find(p => p.MatriculaProfessor == IDprof);
 
                 if (profs == null)
                 {
-                    Console.WriteLine("Turma não Econtrada.");
+                    Console.WriteLine("Professor não Econtrado.");
                     cond = 0;
                 }
 
                 else
                 {
-                    Console.WriteLine("Turma econtrada...");
+                    Console.WriteLine("Professor econtrado...");
                     cond = 3;
                 }
             } while (cond < 2);
@@ -157,26 +168,48 @@ namespace Escola
             escola.Materias.Add(novaMat);
             escola.SalvarDados();
             Console.WriteLine("Matéria cadastrada com Sucesso!");
+            
+        } catch (System.FormatException) {
+            Console.WriteLine("O id do professor deve ser um inteiro");
+        } finally {
             Console.ReadKey();
+        }
         }
 
         public void CadastrarTurmas(Escola escola)
         {
+            try
+            {
+            string nomeTurma;
+            int numSala;
+
             Console.Clear();
             Console.WriteLine("Cadastro de Turma:");
+            do {
+
             Console.WriteLine("Nome Turma: ");
-            string nomeTurma = Console.ReadLine();
+            nomeTurma = Console.ReadLine();
+            nomeTurma = nomeTurma.Trim();
+            } while(nomeTurma == null || nomeTurma == "");
+
+            do {
             Console.WriteLine("Número da Sala: ");
-            int numSala = Convert.ToInt32(Console.ReadLine());
-
-
-
+            numSala = Convert.ToInt32(Console.ReadLine());
+            } while(numSala == null);
 
             Turma novaTuma = new Turma { Idturma = escola.Turmas.Count + 1, NomeTurma = nomeTurma, NumeroSala = numSala };
             escola.Turmas.Add(novaTuma);
             escola.SalvarDados();
             Console.WriteLine("Turma cadastrada com Sucesso!");
-            Console.ReadKey();
+            }
+            catch (System.FormatException)
+            {
+                
+                Console.WriteLine("O id da turma deve ser um inteiro");
+            } finally {
+                Console.ReadKey();
+            }
+
         }
     }
 }
