@@ -123,7 +123,11 @@ namespace Escola {
         static void Alteracoes(Escola escola) {
             Console.Clear();
             Console.WriteLine("Selecione uma opção de alteração:");
-            Console.WriteLine("1 - Vincular Aluno a turma");
+            Console.WriteLine("1 - Vincular aluno a turma");
+            Console.WriteLine("2 - Desvincular aluno da turma");
+            Console.WriteLine("3 - Vincular materia na grade da turma");
+            Console.WriteLine("4 - Desvincular materia na grade da turma");
+            Console.WriteLine("5 - Alterar professor da materia");
             Console.WriteLine("0 - Voltar");
 
             int.TryParse(Console.ReadLine(), out int opcao);
@@ -131,6 +135,18 @@ namespace Escola {
             switch (opcao) {
             case 1:
                 escola.VincularAlunoATurma(escola);
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            case 4:
+                break;
+
+            case 5:
                 break;
 
             case 0:

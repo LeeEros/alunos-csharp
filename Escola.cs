@@ -337,8 +337,6 @@ namespace Escola {
     }
 
     public void ConsultarMateria(Escola escola) {
-
-      try {
         int IdMateira;
         Materia materia;
         Console.Clear();
@@ -374,12 +372,6 @@ namespace Escola {
             }
           }
         }
-      } catch (System.FormatException) {
-
-        Console.WriteLine("O id do professor deve ser um inteiro");
-      } finally {
-        Console.ReadKey();
-      }
 
     }
 
@@ -436,7 +428,7 @@ namespace Escola {
 
         do {
           Console.Clear();
-          Console.WriteLine("Vincular aluno a turma.");
+          Console.WriteLine("Vincular aluno a turma. (Pressione 0 para abortar em qualquer momento)");
           do {
 
             Console.WriteLine("Selecione um aluno:");
@@ -446,7 +438,11 @@ namespace Escola {
             }
             Console.WriteLine("ID do Aluno:");
             idAluno = Convert.ToInt32(Console.ReadLine());
-          } while (idAluno == null || idAluno == 0);
+            if (idAluno == 0) {
+                Console.WriteLine("Abortando..");
+                return;
+          }
+          } while (idAluno == null);
 
           Aluno alunoMatriculado = Alunos.Find(aluno => aluno.MatriculaAluno == idAluno);
 
@@ -466,14 +462,18 @@ namespace Escola {
         do {
           do {
 
-            Console.WriteLine("Selecione uma turma:");
+            Console.WriteLine("Selecione uma turma: (Pressione 0 para abortar em qualquer momento)" );
             Console.WriteLine("{0,-10} {1,-30}", "Id Turma", "Nome Turma");
             foreach(var turma in escola.Turmas) {
               Console.WriteLine("{0,-10} {1,-30}", turma.Idturma, turma.NomeTurma);
             }
             Console.WriteLine("ID do Turma:");
             idTurma = Convert.ToInt32(Console.ReadLine());
-          } while (idTurma == null || idTurma == 0);
+            if (idTurma == 0) {
+                Console.WriteLine("Abortando..");
+                return;
+          }
+          } while (idTurma == null);
 
           turmaCadastrada = Turmas.Find(turma => turma.Idturma == idTurma);
 
