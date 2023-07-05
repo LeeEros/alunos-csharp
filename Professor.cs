@@ -10,7 +10,7 @@ namespace Escola{
 
         public override void ExibirInformacoes()
         {
-            base.ExibirInformacoes();
+            
         }
     }
 }
