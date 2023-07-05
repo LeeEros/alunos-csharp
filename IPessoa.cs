@@ -2,6 +2,6 @@ using System;
 
 namespace Escola{
     public interface IPessoa{
-        void ExibirInformacoes();
+        int calculaIdade();
     }
 }
