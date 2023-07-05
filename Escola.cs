@@ -198,6 +198,40 @@ namespace Escola {
 
       }
 
+      // Consultas
+
+      public void ConsultaAluno(Escola escola) {
+         try {
+            int idAluno;
+            Aluno aluno;
+            Console.Clear();
+            Console.WriteLine("Qual aluno você quer consultar:");
+            do {
+
+               Console.WriteLine("{0,-10} {1,-30}", "Id Aluno", "Nome Aluno");
+               foreach(var alunoLista in escola.Alunos) {
+                  Console.WriteLine("{0,-10} {1,-30}", alunoLista.MatriculaAluno, alunoLista.Nome);
+               }
+               int.TryParse(Console.ReadLine(), out idAluno);
+            } while (idAluno == null);
+
+            aluno = escola.Alunos.Find(aluno => aluno.MatriculaAluno == idAluno);
+
+            if (aluno == null) {
+               Console.WriteLine("Aluno não encontrado");
+            } else {
+               aluno.ExibirInformacoes();
+            }
+         } catch (System.FormatException) {
+
+            Console.WriteLine("O id do aluno e da turma devem ser um inteiro");
+         } finally {
+            Console.ReadKey();
+         }
+      }
+
+      // Alterações
+
       public void VincularAlunoATurma(Escola escola) {
          try {
 
