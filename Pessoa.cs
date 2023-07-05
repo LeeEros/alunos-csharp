@@ -4,11 +4,11 @@ namespace Escola {
     public abstract class Pessoa: IPessoa {
         public string Nome {
             get;
-            protected set;
+            set;
         }
         public DateTime DataNascimento {
             get;
-            protected set;
+            set;
         }
 
         public int calculaIdade() {
