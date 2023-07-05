@@ -138,6 +138,7 @@ namespace Escola {
                 break;
 
             case 2:
+                escola.DesvincularAlunoDaTurma(escola);
                 break;
 
             case 3:

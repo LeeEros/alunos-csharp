@@ -337,41 +337,41 @@ namespace Escola {
     }
 
     public void ConsultarMateria(Escola escola) {
-        int IdMateira;
-        Materia materia;
-        Console.Clear();
-        if (escola.Materias == null || escola.Materias.Count < 1) {
-          Console.WriteLine("A Escola não possuí matérias cadastradas!");
-          return;
+      int IdMateira;
+      Materia materia;
+      Console.Clear();
+      if (escola.Materias == null || escola.Materias.Count < 1) {
+        Console.WriteLine("A Escola não possuí matérias cadastradas!");
+        return;
+      }
+      Console.WriteLine("Qual materia você quer consultar:");
+      do {
+
+        Console.WriteLine("{0,-20} {1,-30}", "Id Materia", "Nome Materia");
+        foreach(var materiaLista in escola.Materias) {
+          Console.WriteLine("{0,-20} {1,-30}", materiaLista.IdMateira, materiaLista.NomeMateria);
         }
-        Console.WriteLine("Qual materia você quer consultar:");
-        do {
+        int.TryParse(Console.ReadLine(), out IdMateira);
+      } while (IdMateira == null);
 
-          Console.WriteLine("{0,-20} {1,-30}", "Id Materia", "Nome Materia");
-          foreach(var materiaLista in escola.Materias) {
-            Console.WriteLine("{0,-20} {1,-30}", materiaLista.IdMateira, materiaLista.NomeMateria);
-          }
-          int.TryParse(Console.ReadLine(), out IdMateira);
-        } while (IdMateira == null);
+      materia = escola.Materias.Find(materia => materia.IdMateira == IdMateira);
 
-        materia = escola.Materias.Find(materia => materia.IdMateira == IdMateira);
+      if (materia == null) {
+        Console.WriteLine("Materia não encontrada");
+      } else {
+        List < Turma > turmas = materia.obterTurmas(escola);
 
-        if (materia == null) {
-          Console.WriteLine("Materia não encontrada");
-        } else {
-          List < Turma > turmas = materia.obterTurmas(escola);
+        Console.WriteLine("Código da materia: " + materia.IdMateira);
+        Console.WriteLine("Nome da materia: " + materia.NomeMateria);
+        Console.WriteLine("Professor da materia: " + materia.ProfessorResposavel);
 
-          Console.WriteLine("Código da materia: " + materia.IdMateira);
-          Console.WriteLine("Nome da materia: " + materia.NomeMateria);
-          Console.WriteLine("Professor da materia: " + materia.ProfessorResposavel);
-
-          if (turmas.Count > 0) {
-            Console.WriteLine("{0,-10} {1,-30}", "Id Turma", "Nome Turma");
-            foreach(var turmaLista in turmas) {
-              Console.WriteLine("{0,-10} {1,-30}", turmaLista.Idturma, turmaLista.NomeTurma);
-            }
+        if (turmas.Count > 0) {
+          Console.WriteLine("{0,-10} {1,-30}", "Id Turma", "Nome Turma");
+          foreach(var turmaLista in turmas) {
+            Console.WriteLine("{0,-10} {1,-30}", turmaLista.Idturma, turmaLista.NomeTurma);
           }
         }
+      }
 
     }
 
@@ -426,6 +426,14 @@ namespace Escola {
         Turma turmaCadastrada;
         int cond = 0;
 
+        if (escola.Turmas.Count < 1) {
+          Console.WriteLine("Não há turmas cadastradas para vincular");
+          return;
+        } else if (escola.Alunos.Count < 1) {
+          Console.WriteLine("Não há alunos cadastrados para vincular");
+          return;
+        }
+
         do {
           Console.Clear();
           Console.WriteLine("Vincular aluno a turma. (Pressione 0 para abortar em qualquer momento)");
@@ -439,9 +447,9 @@ namespace Escola {
             Console.WriteLine("ID do Aluno:");
             idAluno = Convert.ToInt32(Console.ReadLine());
             if (idAluno == 0) {
-                Console.WriteLine("Abortando..");
-                return;
-          }
+              Console.WriteLine("Abortando..");
+              return;
+            }
           } while (idAluno == null);
 
           Aluno alunoMatriculado = Alunos.Find(aluno => aluno.MatriculaAluno == idAluno);
@@ -462,7 +470,7 @@ namespace Escola {
         do {
           do {
 
-            Console.WriteLine("Selecione uma turma: (Pressione 0 para abortar em qualquer momento)" );
+            Console.WriteLine("Selecione uma turma: (Pressione 0 para abortar em qualquer momento)");
             Console.WriteLine("{0,-10} {1,-30}", "Id Turma", "Nome Turma");
             foreach(var turma in escola.Turmas) {
               Console.WriteLine("{0,-10} {1,-30}", turma.Idturma, turma.NomeTurma);
@@ -470,9 +478,9 @@ namespace Escola {
             Console.WriteLine("ID do Turma:");
             idTurma = Convert.ToInt32(Console.ReadLine());
             if (idTurma == 0) {
-                Console.WriteLine("Abortando..");
-                return;
-          }
+              Console.WriteLine("Abortando..");
+              return;
+            }
           } while (idTurma == null);
 
           turmaCadastrada = Turmas.Find(turma => turma.Idturma == idTurma);
@@ -505,6 +513,69 @@ namespace Escola {
         Console.WriteLine("O id do aluno e da turma devem ser um inteiro");
       } finally {
         Console.ReadKey();
+      }
+    }
+    public void DesvincularAlunoDaTurma(Escola escola) {
+      try {
+        int IdAluno;
+        int Idturma;
+        Turma turma;
+        Aluno aluno;
+
+        if (escola.Turmas.Count < 1) {
+          Console.WriteLine("Não há turmas cadastradas para vincular");
+
+          return;
+        } else if (escola.Alunos.Count < 1) {
+          Console.WriteLine("Não há alunos cadastrados para vincular");
+
+          return;
+        }
+        Console.Clear();
+        Console.WriteLine("De qual turma você quer remover um aluno:");
+        do {
+
+          Console.WriteLine("{0,-20} {1,-30}", "Id Turma", "Nome Turma");
+          foreach(var turmaLista in escola.Turmas) {
+            Console.WriteLine("{0,-20} {1,-30}", turmaLista.Idturma, turmaLista.NomeTurma);
+          }
+          int.TryParse(Console.ReadLine(), out Idturma);
+        } while (Idturma == null);
+
+        turma = escola.Turmas.Find(turma => turma.Idturma == Idturma);
+
+        if (turma == null) {
+          Console.WriteLine("Turma não encontrada");
+          return;
+        }
+
+        do {
+          Console.Clear();
+          Console.WriteLine("Qual aluno você deseja remover da turma de " + turma.NomeTurma + ":");
+          turma.MostrarAlunos();
+          int.TryParse(Console.ReadLine(), out IdAluno);
+
+        } while (IdAluno == null);
+
+        aluno = escola.Alunos.Find(aluno => aluno.MatriculaAluno == IdAluno);
+
+        if (aluno == null) {
+          Console.WriteLine("Aluno não encontrado");
+          return;
+        }
+
+        int indexAluno = turma.AlunosTurma.FindIndex(alunoDaLista => alunoDaLista.MatriculaAluno == aluno.MatriculaAluno);
+
+        Console.WriteLine(indexAluno);
+
+        turma.AlunosTurma.RemoveAt(indexAluno);
+        escola.SalvarDados();
+        Console.WriteLine("Aluno desvinculado!");
+      } catch (System.ArgumentOutOfRangeException) {
+        Console.WriteLine("Aluno não localizado na turma!");
+      } finally {
+        Console.ReadLine();
+
       }
     }
   }
