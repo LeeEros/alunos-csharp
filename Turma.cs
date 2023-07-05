@@ -43,7 +43,7 @@ namespace Escola {
                 Console.WriteLine("Grade da Turma:");
                 Console.WriteLine("{0,-10} {1,-30} {2,-30}", "Id Materia", "Nome Materia", "Nome Professor");
                 foreach(var materia in GradeTurma) {
-                    Console.WriteLine("{0,-10} {1,-30}", materia.IdMateira, materia.NomeMateria, materia.ProfessorResposavel.Nome);
+                    Console.WriteLine("{0,-10} {1,-30} {2,-30}", materia.IdMateria, materia.NomeMateria, materia.ProfessorResposavel.Nome);
                 }
             }
         }

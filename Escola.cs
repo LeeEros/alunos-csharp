@@ -47,7 +47,7 @@ namespace Escola {
       }
 
       if (File.Exists(".\\dados\\Materias.json")) {
-        if (new FileInfo(".\\dados\\Alunos.json").Length > 0) {
+        if (new FileInfo(".\\dados\\Materias.json").Length > 0) {
           Materias = JsonConvert.DeserializeObject < List < Materia >> (File.ReadAllText(".\\dados\\Materias.json"));
         }
       } else {
@@ -217,7 +217,7 @@ namespace Escola {
         } while (cond < 2);
 
         Materia novaMat = new Materia {
-          IdMateira = escola.Materias.Count + 1, NomeMateria = nomeMateria, ProfessorResposavel = profs
+          IdMateria = escola.Materias.Count + 1, NomeMateria = nomeMateria, ProfessorResposavel = profs
         };
         escola.Materias.Add(novaMat);
         escola.SalvarDados();
@@ -349,7 +349,7 @@ namespace Escola {
 
     public void ConsultarMateria(Escola escola) {
       try {
-        int IdMateira;
+        int IdMateria;
         Materia materia;
         Console.Clear();
         if (escola.Materias == null || escola.Materias.Count < 1) {
@@ -361,12 +361,12 @@ namespace Escola {
 
           Console.WriteLine("{0,-20} {1,-30}", "Id Materia", "Nome Materia");
           foreach(var materiaLista in escola.Materias) {
-            Console.WriteLine("{0,-20} {1,-30}", materiaLista.IdMateira, materiaLista.NomeMateria);
+            Console.WriteLine("{0,-20} {1,-30}", materiaLista.IdMateria, materiaLista.NomeMateria);
           }
-          int.TryParse(Console.ReadLine(), out IdMateira);
-        } while (IdMateira == null);
+          int.TryParse(Console.ReadLine(), out IdMateria);
+        } while (IdMateria == null);
 
-        materia = escola.Materias.Find(materia => materia.IdMateira == IdMateira);
+        materia = escola.Materias.Find(materia => materia.IdMateria == IdMateria);
 
         if (materia == null) {
           Console.Clear();
@@ -376,7 +376,7 @@ namespace Escola {
 
           List < Turma > turmas = materia.obterTurmas(escola);
 
-          Console.WriteLine("Código da materia: " + materia.IdMateira);
+          Console.WriteLine("Código da materia: " + materia.IdMateria);
           Console.WriteLine("Nome da materia: " + materia.NomeMateria);
           Console.WriteLine("Professor da materia: " + materia.ProfessorResposavel.Nome);
 
@@ -397,7 +397,7 @@ namespace Escola {
     public void ConsultarTurma(Escola escola) {
 
       try {
-        int Idturma;
+        int IdTurma;
         Turma turma;
         Console.Clear();
         if (escola.Turmas == null || escola.Turmas.Count < 1) {
@@ -411,10 +411,10 @@ namespace Escola {
           foreach(var turmaLista in escola.Turmas) {
             Console.WriteLine("{0,-20} {1,-30}", turmaLista.Idturma, turmaLista.NomeTurma);
           }
-          int.TryParse(Console.ReadLine(), out Idturma);
-        } while (Idturma == null);
+          IdTurma = Convert.ToInt32(Console.ReadLine());
+        } while (IdTurma == null);
 
-        turma = escola.Turmas.Find(turma => turma.Idturma == Idturma);
+        turma = escola.Turmas.Find(turma => turma.Idturma == IdTurma);
 
         Console.Clear();
         if (turma == null) {
@@ -429,8 +429,8 @@ namespace Escola {
           turma.MostrarGrade();
         }
       } catch (System.FormatException) {
-        Console.Clear();
-        Console.WriteLine("O id do professor deve ser um inteiro");
+        //Console.Clear();
+        Console.WriteLine("O id da materia deve ser um inteiro");
       } finally {
         Console.ReadKey();
       }
@@ -538,6 +538,7 @@ namespace Escola {
         Console.ReadKey();
       }
     }
+
     public void DesvincularAlunoDaTurma(Escola escola) {
       try {
         int IdAluno;
@@ -546,11 +547,11 @@ namespace Escola {
         Aluno aluno;
 
         if (escola.Turmas.Count < 1) {
-          Console.WriteLine("Não há turmas cadastradas para vincular");
+          Console.WriteLine("Não há turmas cadastradas para desvincular");
 
           return;
         } else if (escola.Alunos.Count < 1) {
-          Console.WriteLine("Não há alunos cadastrados para vincular");
+          Console.WriteLine("Não há alunos cadastrados para desvincular");
 
           return;
         }
@@ -596,6 +597,169 @@ namespace Escola {
       } catch (System.ArgumentOutOfRangeException) {
         Console.Clear();
         Console.WriteLine("Aluno não localizado na turma!");
+      } finally {
+        Console.ReadLine();
+
+      }
+    }
+
+    public void VincularMateriaATurma(Escola escola) {
+      try {
+
+        int IdMateria;
+        int IdTurma;
+        Turma turmaCadastrada;
+        Materia materiaParaCadastrar;
+        int cond = 0;
+
+        if (escola.Turmas.Count < 1) {
+          Console.WriteLine("Não há turmas cadastradas para vincular");
+          return;
+        } else if (escola.Materias.Count < 1) {
+          Console.WriteLine("Não há materias cadastrados para vincular");
+          return;
+        }
+
+        do {
+          Console.Clear();
+          Console.WriteLine("Vincular materia a turma. (Pressione 0 para abortar em qualquer momento)");
+          do {
+
+            Console.WriteLine("Selecione uma materia:");
+            Console.WriteLine("{0,-10} {1,-30}", "Id Materia", "Nome Materia");
+            foreach(var materiaLista in escola.Materias) {
+              Console.WriteLine("{0,-10} {1,-30}", materiaLista.IdMateria, materiaLista.NomeMateria);
+            }
+            Console.WriteLine("ID da Materia:");
+            IdMateria = Convert.ToInt32(Console.ReadLine());
+            if (IdMateria == 0) {
+              Console.WriteLine("Abortando..");
+              return;
+            }
+          } while (IdMateria == null);
+
+          materiaParaCadastrar = Materias.Find(materia => materia.IdMateria == IdMateria);
+
+          if (materiaParaCadastrar == null) {
+            Console.Clear();
+            Console.WriteLine("Materia não Econtrada.");
+            IdMateria = 0;
+            cond = 0;
+          } else {
+            Console.WriteLine("Materia econtrada...");
+            cond = 3;
+          }
+        }
+        while (cond < 2);
+
+        cond = 0;
+
+        do {
+          do {
+            Console.Clear();
+            Console.WriteLine("Selecione uma turma: (Pressione 0 para abortar em qualquer momento)");
+            Console.WriteLine("{0,-10} {1,-30}", "Id Turma", "Nome Turma");
+            foreach(var turma in escola.Turmas) {
+              Console.WriteLine("{0,-10} {1,-30}", turma.Idturma, turma.NomeTurma);
+            }
+            Console.WriteLine("ID do Turma:");
+            IdTurma = Convert.ToInt32(Console.ReadLine());
+            if (IdTurma == 0) {
+              Console.WriteLine("Abortando..");
+              return;
+            }
+          } while (IdTurma == null);
+
+          turmaCadastrada = Turmas.Find(turma => turma.Idturma == IdTurma);
+
+          if (turmaCadastrada == null) {
+            Console.WriteLine("Turma não Econtrada.");
+            IdTurma = 0;
+            cond = 0;
+          } else {
+            Console.WriteLine("Turma econtrada...");
+            cond = 3;
+          }
+        }
+        while (cond < 2);
+
+        Materia materiaJaCadastrada = turmaCadastrada.GradeTurma.Find(materia => materia.IdMateria == IdMateria);
+
+        if (materiaJaCadastrada != null) {
+          Console.Clear();
+          Console.WriteLine("Materia ja vincula nessa turma");
+
+        } else {
+          turmaCadastrada.GradeTurma.Add(materiaParaCadastrar);
+          escola.SalvarDados();
+          Console.WriteLine("Materia Vinculada a turma!");
+        }
+
+      } catch (System.FormatException) {
+
+        Console.WriteLine("O id da materia e da turma devem ser um inteiro");
+      } finally {
+        Console.ReadKey();
+      }
+    }
+
+        public void DesvincularMateriaDaTurma(Escola escola) {
+      try {
+        int IdMateria;
+        int Idturma;
+        Turma turma;
+        Materia materia;
+
+        if (escola.Turmas.Count < 1) {
+          Console.WriteLine("Não há turmas cadastradas para desvincular");
+          return;
+        } else if (escola.Materias.Count < 1) {
+          Console.WriteLine("Não há materias cadastradas para desvincular");
+
+          return;
+        }
+        Console.Clear();
+        Console.WriteLine("De qual turma você quer remover a materia:");
+        do {
+
+          Console.WriteLine("{0,-20} {1,-30}", "Id Turma", "Nome Turma");
+          foreach(var turmaLista in escola.Turmas) {
+            Console.WriteLine("{0,-20} {1,-30}", turmaLista.Idturma, turmaLista.NomeTurma);
+          }
+          int.TryParse(Console.ReadLine(), out Idturma);
+        } while (Idturma == null);
+
+        turma = escola.Turmas.Find(turma => turma.Idturma == Idturma);
+
+        if (turma == null) {
+          Console.WriteLine("Turma não encontrada");
+          return;
+        }
+
+        do {
+          Console.Clear();
+          Console.WriteLine("Qual materia você deseja remover da turma de " + turma.NomeTurma + ":");
+          turma.MostrarGrade();
+          int.TryParse(Console.ReadLine(), out IdMateria);
+
+        } while (IdMateria == null);
+
+        materia = escola.Materias.Find(materia => materia.IdMateria == IdMateria);
+
+        if (materia == null) {
+          Console.WriteLine("Materia não encontrada");
+          return;
+        }
+
+        int indexMateria = turma.GradeTurma.FindIndex(materiaDaLista => materiaDaLista.IdMateria == materia.IdMateria);
+
+        turma.GradeTurma.RemoveAt(indexMateria);
+        escola.SalvarDados();
+        Console.Clear();
+        Console.WriteLine("Materia desvinculada!");
+      } catch (System.ArgumentOutOfRangeException) {
+        Console.Clear();
+        Console.WriteLine("Materia não localizada na turma!");
       } finally {
         Console.ReadLine();
 

@@ -2,7 +2,7 @@ using System;
 
 namespace Escola {
     public class Materia {
-        public int IdMateira {
+        public int IdMateria {
             get;
             set;
         }
@@ -23,7 +23,7 @@ namespace Escola {
 
             foreach (var turma in escola.Turmas)
             {
-                Materia materiaExisteNaturma = turma.GradeTurma.Find(materia => materia.IdMateira == this.IdMateira);
+                Materia materiaExisteNaturma = turma.GradeTurma.Find(materia => materia.IdMateria == this.IdMateria);
                 
                 if(materiaExisteNaturma != null) {
                     turmas.Add(turma);

@@ -142,9 +142,11 @@ namespace Escola {
                 break;
 
             case 3:
+                escola.VincularMateriaATurma(escola);
                 break;
 
             case 4:
+                escola.DesvincularMateriaDaTurma(escola);
                 break;
 
             case 5:
