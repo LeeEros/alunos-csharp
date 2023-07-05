@@ -1,15 +1,23 @@
 using System;
 
-namespace Escola{
-    public class Professor : Pessoa{
-        public int MatriculaProfessor{ get; set;}
+namespace Escola {
+    public class Professor: Pessoa {
+        public int MatriculaProfessor {
+            get;
+            set;
+        }
 
-        public string Formacao{ get; set;}
+        public string Formacao {
+            get;
+            set;
+        }
 
-        public string EmailInstitucional{get; set;}
+        public string EmailInstitucional {
+            get;
+            set;
+        }
 
-        public override void ExibirInformacoes()
-        {
+        public override void ExibirInformacoes() {
             int idade = calculaIdade();
 
             Console.WriteLine("Nome do Professor: " + Nome);

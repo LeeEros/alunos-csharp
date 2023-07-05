@@ -1,7 +1,7 @@
 using System;
 
-namespace Escola{
-    public interface IPessoa{
+namespace Escola {
+    public interface IPessoa {
         int calculaIdade();
     }
 }

@@ -225,7 +225,7 @@ namespace Escola {
                 do {
                     Console.WriteLine("Número da Sala: ");
                     numSala = Convert.ToInt32(Console.ReadLine());
-                     if (numSala == 0) {
+                    if (numSala == 0) {
                         Console.WriteLine("Abortando..");
                         return;
                     }
