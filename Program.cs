@@ -96,7 +96,7 @@ namespace Escola {
             break;
 
          case 2:
-
+            escola.ConsultarProfessor(escola);
             break;
 
          case 3:

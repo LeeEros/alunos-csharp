@@ -245,7 +245,7 @@ namespace Escola {
                int.TryParse(Console.ReadLine(), out idProfessor);
             } while (idProfessor == null);
 
-            professor = escola.Professores.Find(aluno => professor.MatriculaAluno == idProfessor);
+            professor = escola.Professores.Find(professor => professor.MatriculaProfessor == idProfessor);
 
             if (professor == null) {
                Console.WriteLine("Professor não encontrado");
