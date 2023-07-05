@@ -80,9 +80,9 @@ namespace Escola {
                 }
             } while (emailAluno == null || emailAluno == "");
 
-            Aluno novoAluno = new Aluno {
-                MatriculaAluno = escola.Alunos.Count + 1, Nome = nomeAluno, DataNascimento = dataNascimento, EmailAluno = emailAluno
-            };
+            Aluno novoAluno = new Aluno (
+                nomeAluno, dataNascimento, escola.Alunos.Count + 1, emailAluno
+            );
             escola.Alunos.Add(novoAluno);
 
             escola.SalvarDados();
@@ -139,9 +139,9 @@ namespace Escola {
                 }
             } while (emailProf == null || emailProf == "");
 
-            Professor novoProf = new Professor {
-                MatriculaProfessor = escola.Professores.Count + 1, Nome = nomeProf, DataNascimento = dataNasc, Formacao = formacao, EmailInstitucional = emailProf
-            };
+            Professor novoProf = new Professor (
+                nomeProf, dataNasc, escola.Professores.Count + 1, formacao, emailProf
+            );
             escola.Professores.Add(novoProf);
             escola.SalvarDados();
             Console.WriteLine("Professor Cadastrado com Sucesso!");

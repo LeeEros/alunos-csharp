@@ -4,11 +4,16 @@ namespace Escola {
     public abstract class Pessoa: IPessoa {
         public string Nome {
             get;
-            set;
+            protected set;
         }
         public DateTime DataNascimento {
             get;
-            set;
+            protected set;
+        }
+
+        public Pessoa(string nome, DateTime dataNascimento) {
+         this.Nome = nome;
+         this.DataNascimento = dataNascimento;
         }
 
         public int calculaIdade() {
